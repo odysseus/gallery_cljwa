@@ -1,11 +1,10 @@
 (ns gallery.handler
-  (:require [compojure.core :refer [defroutes routes]]
-            [ring.middleware.resource :refer [wrap-resource]]
-            [ring.middleware.file-info :refer [wrap-file-info]]
-            [hiccup.middleware :refer [wrap-base-url]]
-            [compojure.handler :as handler]
+  (:require [compojure.core :refer [defroutes]]
             [compojure.route :as route]
-            [gallery.routes.home :refer [home-routes]]))
+            [compojure.handler :as handler]
+            [noir.util.middleware :as noir-middleware]
+            [gallery.routes.home :refer [home-routes]]
+            [gallery.routes.auth :refer [auth-routes]]))
 
 (defn init []
   (println "gallery is starting"))
@@ -18,6 +17,7 @@
   (route/not-found "Not Found"))
 
 (def app
-  (-> (routes home-routes app-routes)
-      (handler/site)
-      (wrap-base-url)))
+  (noir-middleware/app-handler
+    [auth-routes
+     home-routes
+     app-routes]))

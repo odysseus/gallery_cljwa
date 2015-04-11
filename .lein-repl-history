@@ -1,0 +1,8 @@
+(use '[gallery.models.schema :as schema])
+(schema/create-users-table)
+(use '[gallery.models.schema :as schema] :reload)
+(schema/create-users-table)
+quit
+(start-server)
+(use 'gallery.repl)
+(start-server)
