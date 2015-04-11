@@ -1,9 +1,18 @@
 (ns gallery.views.layout
-  (:require [hiccup.page :refer [html5 include-css]]))
+  (:require [hiccup.page :refer [html5 include-css]]
+            [hiccup.element :refer [link-to]]
+            [noir.session :as session]))
 
-(defn common [& body]
+(defn base [title & body]
   (html5
     [:head
-     [:title "Welcome to gallery"]
+     [:title title]
      (include-css "/css/screen.css")]
     [:body body]))
+
+(defn common [title & content]
+  (base title
+        (if-let [user (session/get :user)]
+          [:p user]
+          (link-to "/register" "Register"))
+        content))

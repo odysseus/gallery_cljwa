@@ -4,11 +4,16 @@
         gallery.handler))
 
 (deftest test-app
-  (testing "main route"
+  (testing "Homepage presence and title"
     (let [response (app (request :get "/"))]
       (is (= (:status response) 200))
-      (is (.contains (:body response) "Hello World"))))
+      (is (.contains (:body response) "Home"))))
 
-  (testing "not-found route"
+  (testing "Registration page presence and title"
+    (let [response (app (request :get "/register"))]
+      (is (= (:status response) 200))
+      (is (.contains (:body response) "Register"))))
+
+  (testing "Non-existent route"
     (let [response (app (request :get "/invalid"))]
       (is (= (:status response) 404)))))

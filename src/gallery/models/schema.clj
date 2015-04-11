@@ -9,5 +9,3 @@
       [:id "SERIAL PRIMARY KEY"]
       [:username "varchar(32) UNIQUE"]
       [:pass "varchar(100)"])))
-
-

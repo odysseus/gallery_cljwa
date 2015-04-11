@@ -1,10 +1,24 @@
 body {
-    color: #555;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 13px;
+  background-color: #fff;
+  color: #555;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  padding: 0 10px;
 }
 
 h1 {
-    text-align: center;
+  text-align: center;
 }
 
+label {
+  width: 150px;
+  float: left;
+}
+
+input {
+  margin-bottom: 10px;
+}
+
+.error {
+  color: red;
+}

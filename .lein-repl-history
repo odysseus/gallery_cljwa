@@ -6,3 +6,6 @@ quit
 (start-server)
 (use 'gallery.repl)
 (start-server)
+(stop-server)
+(start-server)
+quit
