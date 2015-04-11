@@ -6,5 +6,3 @@
    :subname "//localhost/gallery"
    :user "admin"
    :password ""})
-
-

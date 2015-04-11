@@ -1,6 +1,5 @@
-(ns gallery.models.schema
-  (:require [gallery.models.db :refer :all]
-            [clojure.java.jdbc :as sql]))
+(ns gallery.models.user
+  (:require [gallery.models.db :refer :all]))
 
 (defn create-users-table []
   (sql/with-connection db
@@ -9,3 +8,7 @@
       [:id "SERIAL PRIMARY KEY"]
       [:username "varchar(32) UNIQUE"]
       [:pass "varchar(100)"])))
+
+(defn create-user [user]
+  (sql/with-connection db
+    (sql/insert-record :users user)))
